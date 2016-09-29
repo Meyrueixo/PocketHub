@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
-apply plugin: 'org.sonarube'
+apply plugin: 'org.sonarqube'
 
 repositories {
     flatDir {
