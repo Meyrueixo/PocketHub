@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
-apply plugin: 'jacoco'
 
 repositories {
     flatDir {
@@ -143,43 +142,3 @@ dependencies {
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
 }
-
-// Jacoco config
-
-jacoco {
-    // Use this version for upper ones are broken (with Gradle)
-    // https://github.com/jacoco/jacoco/issues/288
-    toolVersion = "0.7.6.201602180812"
-}
-
-// Edit covered scope if needed
-// Having the coverage of both application and tests
-def coverageSourceDirs = [
-        '../app/src'
-]
-
-task jacocoTestReport (type: Test) {
-    group = "Reporting"
-
-    description = "Generate Jacoco coverage reports"
-
-    classDirectories = fileTree(
-            dir: '../app/build/intermediates/classes',
-            excludes: ['**/R.class',
-                       '**/R$*.class',
-                       '**/*$ViewInjector*.*',
-                       '**/BuildConfig.*',
-                       '**/Manifest*.*']
-    )
-
-    additionalSourceDirs = files(coverageSourceDirs)
-    sourceDirectories = files(coverageSourceDirs)
-    executionData = files('../app/build/jacoco/testUnitTestDebug.exec')
-
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-
-}
-//end Jacoco config
