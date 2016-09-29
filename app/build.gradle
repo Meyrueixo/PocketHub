@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
+apply plugin: 'jacoco'
 
 repositories {
     flatDir {
@@ -144,7 +145,6 @@ dependencies {
 }
 
 // Jacoco config
-apply plugin: 'jacoco'
 
 jacoco {
     // Use this version for upper ones are broken (with Gradle)
