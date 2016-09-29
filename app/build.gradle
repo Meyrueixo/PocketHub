@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
+apply plugin: 'org.sonarube'
 
 repositories {
     flatDir {
@@ -103,6 +104,25 @@ android {
         // Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
         preDexLibraries = preDexEnabled && !isTravis
     }
+}
+
+sonarRunner { 
+    sonarProperties { 
+        property "sonar.host.url", "http://192.168.153.130:9000" 
+        property "sonar.jdbc.url", "http://172.18.0.13" 
+        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver" 
+        property "sonar.jdbc.username", "sonar" 
+        property "sonar.jdbc.password", "sonar" 
+        property "sonar.login", "admin" 
+        property "sonar.password", "admin" 
+        property "sonar.sources", "src/main/java" 
+        property "sonar.binaries", "build/classes/debug" 
+        property "sonar.profile", "Android Lint" 
+        property "sonar.projectKey", "my.group:project-key" 
+        property "sonar.projectName", "MyProject" 
+        property "sonar.projectVersion", "1.0-SNAPSHOT" 
+        property "sonar.projectDescription", "My Project description" 
+        }
 }
 
 dependencies {
