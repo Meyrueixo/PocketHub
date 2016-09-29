@@ -118,8 +118,8 @@ sonarRunner {
         property "sonar.sources", "src/main/java" 
         property "sonar.binaries", "build/classes/debug" 
         property "sonar.profile", "Android Lint" 
-        property "sonar.projectKey", "my.group:project-key" 
-        property "sonar.projectName", "MyProject" 
+        property "sonar.projectKey", "sonar-administrators:b3c9a25530c066c7c170076f35c3815e2e322752" 
+        property "sonar.projectName", "PocketHub" 
         property "sonar.projectVersion", "1.0-SNAPSHOT" 
         property "sonar.projectDescription", "My Project description" 
         }
