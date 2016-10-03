@@ -130,6 +130,7 @@ sonarqube {
 }
 
 jacoco {
+    toolVersion = "0.7.2.201409121644"
     reportsDir = file("build/tmp/jacoco.exec")
 }
 
