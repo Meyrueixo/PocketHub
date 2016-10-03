@@ -122,7 +122,7 @@ sonarqube {
         property "sonar.projectName", "PocketHub" 
         property "sonar.projectVersion", "1.1-SNAPSHOT" 
         property "sonar.projectDescription", "My Project description" 
-        property "sonar.android.lint.report", "build/outputs"
+        property "sonar.android.lint.report", "build/outputs/lint-results-debug.xml"
         }
 }
 
