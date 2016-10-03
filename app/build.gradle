@@ -148,7 +148,6 @@ task jacocoTestReport(type: JacocoReport) {
                        '**/Manifest*.*'])
     sourceDirectories = files('src/main/java')
     executionData = files('build/jacoco/testDebugUnitTest.exec')
-    }
 }
 
 dependencies {
