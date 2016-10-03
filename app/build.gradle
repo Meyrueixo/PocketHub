@@ -106,8 +106,8 @@ android {
     }
 }
 
-sonarRunner { 
-    sonarProperties { 
+sonarqube { 
+    properties { 
         property "sonar.host.url", "http://192.168.153.130:9000" 
         property "sonar.jdbc.url", "http://172.18.0.13" 
         property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver" 
