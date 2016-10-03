@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
 apply plugin: 'org.sonarqube'
-apply plugin: 'java'
 apply plugin: 'jacoco'
 
 repositories {
@@ -125,12 +124,31 @@ sonarqube {
         property "sonar.projectVersion", "1.1-SNAPSHOT" 
         property "sonar.projectDescription", "My Project description" 
         property "sonar.android.lint.report", "build/outputs/lint-results-debug.xml"
-        property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
+        property "sonar.jacoco.reportPath", "build/jacoco/testDebug.exec"
+        property 'sonar.junit.reportsPath', "${buildDir}/test-results"
         }
 }
 
 jacoco {
     reportsDir = file("build/tmp/jacoco.exec")
+}
+
+task jacocoTestReport(type: JacocoReport) {
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+    classDirectories = fileTree(
+            dir: 'build/intermediates/classes/debug/com',
+            excludes: ['**/R.class',
+                       '**/R$*.class',
+                       '**/BuildConfig.*',
+                       '**/Manifest*.*'])
+    sourceDirectories = files('src/main/java')
+    executionData = files('build/jacoco/testDebugUnitTest.exec')
+    }
 }
 
 dependencies {
