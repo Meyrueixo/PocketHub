@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
 apply plugin: 'org.sonarqube'
+apply plugin: 'java'
 apply plugin: 'jacoco"
 
 repositories {
@@ -130,6 +131,7 @@ sonarqube {
 
 jacoco {
     reportsDir = file("build/tmp/jacoco.exec")
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
