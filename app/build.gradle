@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
 apply plugin: 'org.sonarqube'
+apply plugin: 'jacoco"
 
 repositories {
     flatDir {
@@ -123,8 +124,12 @@ sonarqube {
         property "sonar.projectVersion", "1.1-SNAPSHOT" 
         property "sonar.projectDescription", "My Project description" 
         property "sonar.android.lint.report", "build/outputs/lint-results-debug.xml"
+        property "sonar.jacoco.reportPath", "build/jacoco/test.exec"
         }
 }
+
+jacoco {
+    reportsDir = file("build/tmp/jacoco.exec")
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
