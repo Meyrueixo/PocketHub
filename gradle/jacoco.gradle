@@ -21,19 +21,19 @@ android {
 project.afterEvaluate {
     //Gather build type and product flavor names in a list
     def buildTypes = android.buildTypes.collect { type -> type.name }
-    def productFlavors = android.productFlavors.collect { flavor -> flavor.name }
-    if (!productFlavors) productFlavors.add('')
+//    def productFlavors = android.productFlavors.collect { flavor -> flavor.name }
+//    if (!productFlavors) productFlavors.add('')
 
-    productFlavors.each { productFlavorName ->
+//    productFlavors.each { productFlavorName ->
         buildTypes.each { buildTypeName ->
 
             //Define the sourceName and the sourcePath.
             def sourceName, sourcePath
-            if (!productFlavorName) {
+//            if (!productFlavorName) {
                 sourceName = sourcePath = "${buildTypeName}"
             } else {
-                sourceName = "${productFlavorName}${buildTypeName.capitalize()}"
-                sourcePath = "${productFlavorName}/${buildTypeName}"
+                sourceName = "${buildTypeName.capitalize()}"
+                sourcePath = "${buildTypeName}"
             }
 
             def testTaskName = "test${sourceName.capitalize()}UnitTest"
@@ -64,7 +64,6 @@ project.afterEvaluate {
                         ])
 
                 sourceDirectories = files(["src/main/java",
-                                           "src/$productFlavorName/java",
                                            "src/$buildTypeName/java"])
 
                 executionData = files("${project.buildDir}/jacoco/${testTaskName}.exec")
