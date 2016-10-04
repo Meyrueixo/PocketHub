@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
-apply plugin: 'org.sonarqube'
 
 //script plugins
 apply from: rootProject.file('gradle/jacoco.gradle')
@@ -109,29 +108,6 @@ android {
     }
 }
 
-/* sonarqube { 
-    properties { 
-        property "sonar.host.url", "http://192.168.153.130:9000" 
-        property "sonar.jdbc.url", "http://172.18.0.13" 
-        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver" 
-        property "sonar.jdbc.username", "sonar" 
-        property "sonar.jdbc.password", "sonar" 
-        property "sonar.login", "admin" 
-        property "sonar.password", "admin" 
-        property "sonar.sources", "src/main/java" 
-        property "sonar.binaries", "build/classes/debug" 
-        property "sonar.profile", "Android Lint" 
-        property "sonar.projectKey", "sonar-administrators:b3c9a25530c066c7c170076f35c3815e2e322752" 
-        property "sonar.projectName", "PocketHub" 
-        property "sonar.projectVersion", "1.1-SNAPSHOT" 
-        property "sonar.projectDescription", "My Project description" 
-        property "sonar.android.lint.report", "build/outputs/lint-results-debug.xml"
-        property "sonar.jacoco.reportPath", "build/jacoco/testDebug.exec"
-        property 'sonar.junit.reportsPath', "${buildDir}/test-results"
-        }
-}
-
-*/
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.4.0'
