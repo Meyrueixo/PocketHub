@@ -30,11 +30,9 @@ project.afterEvaluate {
             //Define the sourceName and the sourcePath.
             def sourceName, sourcePath
 //            if (!productFlavorName) {
-                sourceName = sourcePath = "${buildTypeName}"
-            } else {
-                sourceName = "${buildTypeName.capitalize()}"
-                sourcePath = "${buildTypeName}"
-            }
+            sourceName = sourcePath = "${buildTypeName}"
+            sourceName = "${buildTypeName.capitalize()}"
+            sourcePath = "${buildTypeName}"
 
             def testTaskName = "test${sourceName.capitalize()}UnitTest"
 
