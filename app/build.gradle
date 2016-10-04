@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
 apply plugin: 'org.sonarqube'
-apply plugin: 'jacoco'
+
+//script plugins
+apply from: rootProject.file('gradle/jacoco.gradle')
 
 repositories {
     flatDir {
@@ -107,7 +109,7 @@ android {
     }
 }
 
-sonarqube { 
+/* sonarqube { 
     properties { 
         property "sonar.host.url", "http://192.168.153.130:9000" 
         property "sonar.jdbc.url", "http://172.18.0.13" 
@@ -129,28 +131,7 @@ sonarqube {
         }
 }
 
-jacoco {
-    toolVersion = "0.7.2.201409121644"
-    reportsDir = file("build/tmp/jacoco.exec")
-}
-
-task jacocoTestReport(type: JacocoReport) {
-    group = "Reporting"
-    description = "Generate Jacoco coverage reports after running tests."
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-    classDirectories = fileTree(
-            dir: 'build/intermediates/classes/debug/com',
-            excludes: ['**/R.class',
-                       '**/R$*.class',
-                       '**/BuildConfig.*',
-                       '**/Manifest*.*'])
-    sourceDirectories = files('src/main/java')
-    executionData = files('build/jacoco/testDebugUnitTest.exec')
-}
-
+*/
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.4.0'
@@ -183,7 +164,7 @@ dependencies {
     //Libs for testing
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
-    testCompile('org.robolectric:robolectric:3.0') {
+    testCompile('org.robolectric:robolectric:3.1-SNAPSHOT') {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
