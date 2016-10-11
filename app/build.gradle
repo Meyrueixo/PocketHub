@@ -1,11 +1,4 @@
-apply plugin: 'com.android.application'
-apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
-apply plugin: 'android-sdk-manager'
-
-//script plugin jacoco
-apply from: rootProject.file('gradle/jacoco.gradle')
-
-//script android-sdk-manager
+//Android SDK Manager 
 buildscript {
   repositories {
     mavenCentral()
@@ -15,6 +8,13 @@ buildscript {
     classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
   }
 }
+
+apply plugin: 'android-sdk-manager'
+apply plugin: 'com.android.application'
+apply plugin: 'com.github.ben-manes.versions'   // ./gradlew dependencyUpdates -Drevision=release
+
+//script plugin jacoco
+apply from: rootProject.file('gradle/jacoco.gradle')
 
 repositories {
     flatDir {
